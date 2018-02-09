@@ -2,6 +2,11 @@ node {
     def server = Artifactory.server 'ART'
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo
+    
+    stage('Checkout')
+    {
+        checkout scm
+    }
 
     stage ('Artifactory configuration') {
         rtMaven.tool = 'M3' // Tool name from Jenkins configuration
